@@ -1,1 +1,183 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kismis's Personal Snack | By Chikku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --choco: #3d2314; --silk: #4b0082; --gold: #ffd700; --primary: #ff4d6d; --bg: #1a0a06; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); font-family: 'Poppins', sans-serif; overflow-x: hidden; color: #fff; }
+
+        /* Rain of Flirty Things */
+        .particle { position: fixed; top: -10%; pointer-events: none; z-index: 999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: slideIn 0.8s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* Progress Bar */
+        .progress-container { position: fixed; top: 0; width: 100%; height: 6px; background: #000; z-index: 1000; }
+        .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: 0.5s; }
+
+        /* Flip Cards */
+        .card-container { perspective: 1000px; width: 320px; height: 400px; margin: 20px auto; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border: 2px solid var(--gold); }
+        .card-front { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+        .card-back { background: var(--primary); color: white; transform: rotateY(180deg); }
+
+        /* Buttons */
+        .btn-main { background: var(--primary); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 20px; box-shadow: 0 0 20px rgba(255, 77, 109, 0.4); }
+        #noBtn { background: #444; color: #ccc; position: absolute; border-radius: 50px; padding: 10px 25px; border: none; transition: 0.1s; z-index: 99; }
+
+        h1 { font-family: 'Pacifico', cursive; color: var(--gold); }
+        .flirt-quote { font-size: 1.1rem; color: var(--gold); font-style: italic; margin-top: 15px; }
+        .hot-text { color: #ff4d6d; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+<section id="s1" class="active">
+    <img src="https://media.tenor.com/2Y_Bw9X0y_AAAAAi/bunny-love.gif" style="width:150px;">
+    <h1>Ready for a sugar rush?</h1>
+    <p>Chocolates are sweet, but they don't look half as good as you do today. 😉</p>
+    <button class="btn-main" onclick="startApp()">Taste the Magic ✨</button>
+</section>
+
+<section id="s2">
+    <h1>KitKat Break? 🔴</h1>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>They say "Have a break, have a KitKat"...</p>
+                <p style="font-size: 0.8rem; margin-top: 20px;">(Tap to see my version)</p>
+            </div>
+            <div class="card-back">
+                <p>But I'd rather have a <b>BREAK-UP</b> with the world just to spend 5 minutes alone with you. ❤️</p>
+                <p class="flirt-quote">“Kismis, I choose you—today, tomorrow, and always.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s2','s3')">Too Much? No, Next... 🍫</button>
+</section>
+
+<section id="s3">
+    <h1>Silk Smooth Seduction 💜</h1>
+    <img src="https://media.tenor.com/7p48-8uXidIAAAAi/milk-and-mocha.gif" style="width:120px;">
+    <p class="flirt-quote">“Kiss me... close your eyes... miss me...”</p>
+    <p style="margin-top: 10px;">If being <span class="hot-text">sexy</span> was a crime, you'd be a life-sized Dairy Milk Silk—too sweet to resist and too smooth to handle.</p>
+    <p style="font-size: 0.9rem; margin-top:15px;">“I may not say it perfectly every time, Kismis, but my heart knows only one name.”</p>
+    <button class="btn-main" onclick="nav('s3','s4')">Next Flavor... 👅</button>
+</section>
+
+<section id="s4">
+    <h1>Soft & Squishy 🥧</h1>
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>You know why you're my Choco-Pie?</p>
+            </div>
+            <div class="card-back">
+                <p>Because you're soft, round (in the cute way!), and I just want to bite those cheeks forever. 😈</p>
+                <p class="flirt-quote">“Kismis, you feel like home to me. Safe, comforting, and full of love.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s4','s5')">Sweetness Test 🌡️</button>
+</section>
+
+<section id="s5">
+    <h1>Calculating Kismis's Sweetness...</h1>
+    <div style="width: 250px; height: 20px; border: 2px solid white; border-radius: 10px; margin-top: 20px;">
+        <div id="sugarBar" style="width: 0%; height: 100%; background: var(--primary); transition: 3s;"></div>
+    </div>
+    <h2 id="sugarResult" style="margin-top: 20px;">0% Sweet</h2>
+    <p id="sugarMeme" style="display:none;" class="hot-text">DANGER: TOO ATTRACTIVE! ⚠️</p>
+    <button class="btn-main" id="sugarBtn" onclick="testSugar()">Start Test</button>
+    <button class="btn-main" id="nextBtn" style="display:none;" onclick="nav('s5','s6')">Forgive your Duffer? 🥺</button>
+</section>
+
+<section id="s6">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" style="width:120px;">
+    <h1>A Bitter-Sweet Moment 🍫</h1>
+    <p>I know I act like a bitter dark chocolate sometimes, but I promise to be your Silk forever. Forgive me, Kismis?</p>
+    <div style="height: 100px; position: relative; width: 100%; margin-top: 20px;">
+        <button class="btn-main" onclick="nav('s6','s7')">Yes, My Baby ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 40px; border: 2px solid var(--gold);">
+        <h1>My Forever Snack ❤️</h1>
+        <p>“Kismis, you’re not just someone I love… you’re someone my heart chose without any doubt.”</p>
+        <p class="flirt-quote">“I don’t want a future where your hand isn’t in mine.”</p>
+        <p style="font-family: 'Pacifico'; font-size: 2.2rem; color: var(--primary); margin-top: 20px;">I Love You! 🍫✨</p>
+    </div>
+    <p style="margin-top:20px; font-size: 0.8rem;">Ready for your real chocolate now? 😉</p>
+</section>
+
+<script>
+    let step = 1;
+    const total = 7;
+    const music = document.getElementById('bgMusic');
+
+    function startApp() {
+        music.play();
+        nav('s1', 's2');
+        startRain();
+    }
+
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        step++;
+        document.getElementById('pBar').style.width = (step / total * 100) + '%';
+    }
+
+    function testSugar() {
+        document.getElementById('sugarBar').style.width = '100%';
+        document.getElementById('sugarBtn').style.display = 'none';
+        let count = 0;
+        let timer = setInterval(() => {
+            count += 11;
+            document.getElementById('sugarResult').innerText = count + '% Sweet';
+            if(count > 99) {
+                clearInterval(timer);
+                document.getElementById('sugarResult').innerText = 'ERROR: 1000% SWEET!';
+                document.getElementById('sugarMeme').style.display = 'block';
+                document.getElementById('nextBtn').style.display = 'inline-block';
+            }
+        }, 300);
+    }
+
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        btn.style.left = Math.random() * 80 + 'vw';
+        btn.style.top = Math.random() * 80 + 'vh';
+    }
+
+    function startRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Flirty/Sweet mix: 🍫, 💋, 🍓, ❤️, 💙, 💛, 🌹
+            const items = ["🍫", "💋", "🍓", "❤️", "💙", "💛", "🌹"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 20 + "px";
+            p.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }, 300);
+    }
+</script>
+</body>
+</html>
