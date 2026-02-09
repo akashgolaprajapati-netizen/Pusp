@@ -1,1 +1,184 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kismis's Passion Box | By Chikku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --red: #d00000; --dark-red: #6a040f; --gold: #ffb703; --bg: #1a0103; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); font-family: 'Poppins', sans-serif; overflow-x: hidden; color: #fff; }
+
+        /* Falling Hearts & Choco */
+        .particle { position: fixed; top: -10%; pointer-events: none; z-index: 999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: slideIn 0.8s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: scale(1.1); } to { opacity: 1; transform: scale(1); } }
+
+        /* Progress Bar */
+        .progress-container { position: fixed; top: 0; width: 100%; height: 6px; background: #000; z-index: 1000; }
+        .progress-bar { height: 100%; background: var(--red); width: 0%; transition: 0.5s; box-shadow: 0 0 15px var(--red); }
+
+        /* Chocolate Cards */
+        .card-container { perspective: 1000px; width: 320px; height: 450px; margin: 20px auto; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; border: 2px solid var(--red); }
+        .card-front { background: linear-gradient(145deg, #2b0b0e, #4a0404); }
+        .card-back { background: #fff; color: #1a0103; transform: rotateY(180deg); }
+
+        /* Buttons */
+        .btn-main { background: var(--red); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 20px; box-shadow: 0 0 20px rgba(208, 0, 0, 0.5); transition: 0.3s; }
+        #noBtn { background: #444; color: #ccc; position: absolute; border-radius: 50px; padding: 10px 25px; border: none; transition: 0.1s; z-index: 99; }
+
+        h1 { font-family: 'Pacifico', cursive; color: var(--gold); font-size: 2.2rem; }
+        .choco-img { width: 180px; height: auto; margin-bottom: 20px; border-radius: 10px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .flirt-quote { font-style: italic; color: var(--gold); font-weight: 600; margin-top: 15px; }
+        .hot-red { color: var(--red); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+<section id="s1" class="active">
+    <img src="https://media.tenor.com/2Y_Bw9X0y_AAAAAi/bunny-love.gif" style="width:150px;">
+    <h1>Ready for Chikku’s Love?</h1>
+    <p>Chocolates might melt, but my desire for you only gets hotter. ❤️‍🔥</p>
+    <button class="btn-main" onclick="startApp()">Enter the Passion Box 💋</button>
+</section>
+
+<section id="s2">
+    <h1>KitKat Break 🔴</h1>
+    <img src="https://m.media-amazon.com/images/I/71Y7p7H9NIL._SL1500_.jpg" class="choco-img">
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>They say "Have a break"...</p>
+                <p style="font-size: 0.8rem; margin-top: 20px; color: var(--gold);">(Tap to break the rules)</p>
+            </div>
+            <div class="card-back">
+                <p>I’d break every rule in the world just to have you by my side. You’re my <span class="hot-red">favorite crush</span>, Kismis.</p>
+                <p class="flirt-quote">“I choose you—today, tomorrow, and always.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s2','s3')">Next Treat... 😋</button>
+</section>
+
+<section id="s3">
+    <h1>Silk Seduction 💜</h1>
+    <img src="https://m.media-amazon.com/images/I/61K-PjVNo2L._SL1000_.jpg" class="choco-img">
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>“Kiss me... close your eyes...”</p>
+            </div>
+            <div class="card-back">
+                <p>You’re smoother than Silk and twice as addictive. One look from you and I’m <span class="hot-red">completely melted</span>.</p>
+                <p class="flirt-quote">“My heart knows only one name: Kismis.”</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s3','s4')">Try some Pie? 👅</button>
+</section>
+
+<section id="s4">
+    <h1>Soft Choco-Pie 🥧</h1>
+    <img src="https://m.media-amazon.com/images/I/71wKsh9MOnL._SL1500_.jpg" class="choco-img">
+    <p class="flirt-quote">“Kismis, you feel like home to me.”</p>
+    <p style="margin: 15px 0;">Soft, sweet, and I just want to gobble you up! Can I call you mine forever?</p>
+    <button class="btn-main" onclick="nav('s4','s5')">The Sweetness Test 🔥</button>
+</section>
+
+<section id="s5">
+    <h1>Measuring Kismis's Hotness...</h1>
+    <div style="width: 280px; height: 25px; border: 2px solid var(--red); border-radius: 15px; margin-top: 20px; background: #000;">
+        <div id="sugarBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffb703, #d00000); transition: 3s;"></div>
+    </div>
+    <h2 id="sugarResult" style="margin-top: 20px; color: var(--gold);">Scanning...</h2>
+    <p id="sugarMeme" style="display:none;" class="hot-red">WARNING: VOLCANO LEVEL HOT! 🌋</p>
+    <button class="btn-main" id="sugarBtn" onclick="testSugar()">Start Scan</button>
+    <button class="btn-main" id="nextBtn" style="display:none;" onclick="nav('s5','s6')">Accept my Apology? 🥺</button>
+</section>
+
+<section id="s6">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" style="width:120px;">
+    <h1>Forgive your Duffer? 🍫</h1>
+    <p>I know I act like bitter dark chocolate, but my heart is pure Silk for you. Forgive me, baby?</p>
+    <div style="height: 100px; position: relative; width: 100%; margin-top: 20px;">
+        <button class="btn-main" onclick="nav('s6','s7')">Yes, My Chikku ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 40px; border: 3px solid var(--red); box-shadow: 0 0 30px rgba(208, 0, 0, 0.4);">
+        <h1>To My Forever Snack ❤️</h1>
+        <p>“Kismis, with you every ordinary day feels special. I don’t want a future where your hand isn’t in mine.”</p>
+        <p class="flirt-quote" style="font-size: 1.3rem;">“Will you walk this life with me?”</p>
+        <p style="font-family: 'Pacifico'; font-size: 2.5rem; color: var(--red); margin-top: 20px; text-shadow: 2px 2px #000;">I Love You! 🍫💋</p>
+    </div>
+</section>
+
+<script>
+    let step = 1;
+    const total = 7;
+    const music = document.getElementById('bgMusic');
+
+    function startApp() {
+        music.play();
+        nav('s1', 's2');
+        startRain();
+    }
+
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        step++;
+        document.getElementById('pBar').style.width = (step / total * 100) + '%';
+    }
+
+    function testSugar() {
+        document.getElementById('sugarBar').style.width = '100%';
+        document.getElementById('sugarBtn').style.display = 'none';
+        let count = 0;
+        let timer = setInterval(() => {
+            count += 13;
+            document.getElementById('sugarResult').innerText = count + '% HOT';
+            if(count > 99) {
+                clearInterval(timer);
+                document.getElementById('sugarResult').innerText = 'DANGER: TOO SEXY TO HANDLE!';
+                document.getElementById('sugarMeme').style.display = 'block';
+                document.getElementById('nextBtn').style.display = 'inline-block';
+            }
+        }, 200);
+    }
+
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        btn.style.left = Math.random() * 80 + 'vw';
+        btn.style.top = Math.random() * 80 + 'vh';
+    }
+
+    function startRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Red Theme Rain: 🍫, 💋, 🍓, ❤️, 💙, 💛, 🌹
+            const items = ["🍫", "💋", "🍓", "❤️", "💙", "💛", "🌹", "🔥"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 20 + "px";
+            p.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }, 300);
+    }
+</script>
+</body>
+</html>
